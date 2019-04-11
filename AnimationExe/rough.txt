@@ -1,0 +1,14 @@
+Animated.timing(this.state.fadeIn,{
+        toValue:1,
+        duration:2000,
+        easing:Easing.elastic(10),
+      }),
+    Animated.spring(this.state.springVal,{
+      toValue:1,
+      duration:2000,
+      friction:0,
+    }),Animated.timing(this.state.yPos,{
+      toValue:100,
+      duration:2000,
+      easing:Easing.linear
+    })

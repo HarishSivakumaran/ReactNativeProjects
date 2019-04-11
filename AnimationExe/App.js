@@ -10,49 +10,56 @@ export default class Animations extends React.Component{
         this.state = {
             xPos : new Animated.Value(0),
             yPos: new Animated.Value(0),
-            fadeIn: new Animated.Value(0.3),
-            springVal:new Animated.Value(0.3),
+            fadeIn: new Animated.Value(0.8),
+            springVal:new Animated.Value(1),
+            rotateVal:new Animated.Value(0),
 
         }
     }
     animateMethod=()=>{
-      // Animated.timing(this.state.xPos,{
-      //     toValue: -100,
-      //     duration:1000,
-      //     easing:Easing.linear,
-
-      // });
+     ;
       console.log("heuy");
       
 
-      Animated.parallel([Animated.timing(this.state.yPos,{
-        toValue:100,
-        duration:2200,
-        easing:Easing.back(50)
-      }), Animated.timing(this.state.fadeIn,{
-        toValue:1,
-        duration:1000,
-        easing:Easing.elastic(10),
-      }),
-    Animated.spring(this.state.springVal,{
-      toValue:1,
-      duration:1000,
-      friction:1,
-    })])
+      Animated.parallel([ Animated.timing(this.state.xPos,{
+      toValue: 300,
+      duration:3000,
+      easing:Easing.bounce,
+     
+      
+    }),
+    Animated.timing(this.state.rotateVal,{
+      toValue:100,
+      duration:3000,
+      easing:Easing.linear
+    })
+    
+    
+    ])
       .start(()=>{
         this.setState({
           yPos:new Animated.Value(0),
-          fadeIn:new Animated.Value(0),
-          springVal:new Animated.Value(0),
+          fadeIn:new Animated.Value(1),
+          springVal:new Animated.Value(1),
+          xPos:new Animated.Value(0),
+          rotateVal:new Animated.Value(0),
         })
         this.animateMethod();});
   }
 
     render(){
 
+      const interpolatedRotateVal = this.state.rotateVal.interpolate({
+        inputRange:[0,100],
+        outputRange:["0deg","360deg"]
+      })
+
         let animationStyle ={
-            transform:[{
-scale:this.state.springVal,            }],
+            transform:[
+              {scale:this.state.springVal },
+{translateY:this.state.yPos},
+{translateX:this.state.xPos},
+{rotate: interpolatedRotateVal}],
             opacity:this.state.fadeIn,
 
         }
