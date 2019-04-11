@@ -1,7 +1,6 @@
 import React from "react";
 import {createStackNavigator,createAppContainer} from "react-navigation"
 import HomeScreen from "./screens/HomeScreen";
-import HeaderCustom from "./src/components/HeaderCustom";
 
 import CameraScreen from "./screens/CameraScreen";
 

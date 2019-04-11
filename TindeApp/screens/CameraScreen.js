@@ -1,4 +1,4 @@
-import React,{Component} from "react";
+import React from "react";
 import {ImageBackground,Text,StyleSheet,TouchableOpacity} from "react-native";
 import {Permissions,Camera} from "expo";
 import {FontAwesome} from "@expo/vector-icons";
