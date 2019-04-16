@@ -31,6 +31,8 @@ export default class HomeScreen extends React.Component{
         this.props.navigation.setParams({
             goToCamera:this.goToCamera,
         })
+
+       
     }
 
     static navigationOptions = ({navigation})=>{
@@ -48,9 +50,14 @@ export default class HomeScreen extends React.Component{
     }
 
     render(){
+        let pic = this.props.navigation.getParam("pic")
+        if(pic != null){
+            users.push({id:"MyPic",uri:pic})
+        }
         return(
             <View style={styles.container}>
             <TinderCards 
+            users={users}
             swipRight={this.goToProfile}/>
             </View>
         );

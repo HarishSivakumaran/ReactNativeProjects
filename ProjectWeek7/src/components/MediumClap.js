@@ -7,6 +7,7 @@ export default class MediumClap extends Component{
         super(props);
         this.state = {
             clapsCount : 0,
+            clap :  [0]
         }
 
         this.pos = new Animated.Value(0);
@@ -18,31 +19,51 @@ export default class MediumClap extends Component{
         })
     }
 
+    renderAnim=()=>{
+        console.log("renderAnim");
+
+        return this.state.clap.map((val,index)=>{
+
+            return(
+                <Animated.View
+                key={index}
+                 style={[styles.circleInside,{
+                    transform:[{translateY:this.pos}],opacity:this.opacity,
+                }]}>
+                <TouchableWithoutFeedback >
+                <FontAwesome
+                name="heart"
+                size={40}
+                color="pink"></FontAwesome>
+                </TouchableWithoutFeedback>
+                </Animated.View>
+
+            );
+
+        })
+    }
     moveUp=()=>{
+        console.log("moveUp");
+        
         
         Animated.timing(this.pos,{
             toValue:-100,
             duration:1000,
             easing:Easing.linear,
+            useNativeDriver:true
         }).start(()=>{
             this.pos.setValue(0);
+           
+            
         });
     }
 
     render(){
         return(
             <View >
-            <Animated.View style={[styles.circleInside,{
-                transform:[{translateY:this.pos}],opacity:this.opacity,
-            }]}>
-            <TouchableWithoutFeedback>
-            <FontAwesome
-            name="heart"
-            size={40}
-            color="pink"></FontAwesome>
-            </TouchableWithoutFeedback>
+          
+            {this.renderAnim()}
 
-            </Animated.View>
             <View style={styles.circle}>
             <TouchableWithoutFeedback
 

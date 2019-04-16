@@ -23,7 +23,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.SaibabaThunai.Proj7"
+    },
+    "android": {
+      "package": "com.SaibabaThunai.Proj7"
     }
   }
 }

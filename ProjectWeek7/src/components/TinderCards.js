@@ -2,27 +2,7 @@ import React,{Component} from "react";
 import {View,PanResponder,Text,Animated,Image,Dimensions,StyleSheet} from "react-native";
 const screenHeight  = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
-const users =[
-    {
-        id:"Ann",
-        uri:{uri:"https://images.pexels.com/photos/2090704/pexels-photo-2090704.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}
-    },
-    {
-        id:"Lucy",
-        uri:{uri:"https://images.pexels.com/photos/2102891/pexels-photo-2102891.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}
-    },
-    {
-        id:"Mathew",
-        uri:{uri:"https://images.pexels.com/photos/2072453/pexels-photo-2072453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}
-    },
-    {
-        id:"Robin",
-        uri:{uri:"https://images.pexels.com/photos/2118049/pexels-photo-2118049.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}
-    },
-    {
-        id:"Joey",
-        uri:{uri:"https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}
-    }]
+
 
 export default class TinderCards extends Component{
 
@@ -123,6 +103,8 @@ export default class TinderCards extends Component{
         })
     }
     renderCards=()=>{
+
+        users=this.props.users
 
         return users.map(
             (user,index)=>{
