@@ -14,10 +14,15 @@ export default class TwitterAnim extends Component{
               outputRange:[maxHeaderHeight,minHeaderHeight],
               extrapolate:"clamp"
           })
+          this.scrollViewTop = this.yScroll.interpolate({
+            inputRange:[0,maxHeaderHeight],
+            outputRange:[maxHeaderHeight+50,minHeaderHeight],
+            extrapolate:"clamp"
+        })
 
           this.headerZIndex = this.yScroll.interpolate({
             inputRange:[0,maxHeaderHeight-minHeaderHeight],
-            outputRange:[1,0],
+            outputRange:[0,1],
             extrapolate:"clamp"
         })
           this.imageHeightAni = this.yScroll.interpolate({
@@ -33,24 +38,27 @@ export default class TwitterAnim extends Component{
     }
     render(){
         return(
-            <View style={{flex:1,zIndex:0}}>
+            <View style={{flex:1,}}>
 
-            <Animated.View style={[styles.container,{height:this.headerHeight,zIndex:1}]}>
-            <Animated.Image
-            source={{uri:"https://images.pexels.com/photos/2090704/pexels-photo-2090704.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}}
-            style={[styles.imageStyle,{opacity:this.headerZIndex,height:this.imageHeightAni,width:this.imageHeightAni,borderRadius:this.imageHeightAni,
-            transform:[{translateY:this.imageMoveAni}]}]}></Animated.Image>
-
+            <Animated.View style={[styles.container,{height:this.headerHeight,zIndex:this.headerZIndex}]}>
+            
             </Animated.View>
 
-            <ScrollView 
-            style={{flex:1,zIndex:0,marginTop:imageHeight/2}}
+            <Animated.Image
+            source={{uri:"https://images.pexels.com/photos/2090704/pexels-photo-2090704.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}}
+            style={[styles.imageStyle,{height:this.imageHeightAni,width:this.imageHeightAni,borderRadius:this.imageHeightAni,
+            transform:[{translateY:this.imageMoveAni}]}]}></Animated.Image>
+
+
+            <Animated.ScrollView 
+            style={[styles.scrollView,{ top:this.scrollViewTop,
+            }]}
             scrollEventThrottle={16}
             onScroll={(Animated.event(
                 [{nativeEvent: {contentOffset: {y: this.yScroll}}}]
             ))}
             >
-            <View style={{height:1000,zIndex:0,}}>
+            <View style={{height:1000}}>
             <Text style={{fontSize:15,fontFamily:"sans-serif-medium",zIndex:0}}>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -58,7 +66,8 @@ export default class TwitterAnim extends Component{
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
             </Text>
             </View>
-            </ScrollView>
+           
+            </Animated.ScrollView>
             </View>
         );
     }
@@ -67,8 +76,8 @@ export default class TwitterAnim extends Component{
 const styles = StyleSheet.create({
     container :{
         backgroundColor:"skyblue",
-        width:"100%",
-        zIndex:0,
+        position:"absolute",
+        width:"100%"
     },
     imageStyle:{
         position:"absolute",
@@ -77,5 +86,11 @@ const styles = StyleSheet.create({
         left:20,
         borderColor:"white",
         marginBottom:imageHeight/2
+    },
+    scrollView:{
+        position:"absolute",
+        left:0,
+        right:0,
+        bottom:0,
     }
 })
