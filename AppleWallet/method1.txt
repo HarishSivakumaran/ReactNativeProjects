@@ -1,0 +1,101 @@
+import React from 'react';
+import { StyleSheet, Text, View, Animated,ScrollView,Dimensions} from 'react-native';
+import Cards,{cardHeight,cardTitle} from "./src/components/Cards";
+
+var height =Dimensions.get("window").height;
+
+const cardVals =[ 
+  { 
+    name:"1",
+    color:"#10A881",
+    title:"Card 1",
+  },
+  { 
+    name:"2",
+    color:"#DFAF2B",
+    title:"Card 2",
+  },
+  { 
+    name:"3",
+    color:"#BB2CD9",
+    title:"Card 3",
+  },
+  { 
+    name:"4",
+    color:"#1287A5",
+    title:"Card 4",
+  },
+  { 
+    name:"5",
+    color:"#D63031",
+    title:"Card 5",
+  },
+  
+
+]
+
+export default class App extends React.Component {
+
+  constructor(props){
+    super(props);
+    
+    this.yScroll=new Animated.Value(0);
+    
+  }
+
+  renderCards=()=>{
+
+   
+    return cardVals.map((cardVal,index)=>{
+
+      var yVal = this.yScroll.interpolate({
+        inputRange:[0,cardHeight],
+        outputRange:[ -(cardHeight-cardTitle)*index,-cardTitle*index ],
+        extrapolate:"clamp"
+      })
+  
+
+      return (
+        <Animated.View 
+        style={{width:"100%",height:cardHeight,alignItems:"center",transform:[{translateY:yVal}]}}
+        key={index}
+        >
+        <Cards 
+        backgroundColor={cardVal.color}></Cards>
+        </Animated.View>
+      );
+
+
+    })
+  }
+
+  render() {
+    return (
+         <Animated.ScrollView 
+         showsVerticalScrollIndicator={false}
+         style={styles.scrollView}
+         scrollEventThrottle={16}
+         onScroll={(Animated.event([
+           {nativeEvent:{
+             contentOffset:{
+               y:this.yScroll,
+             }
+           }}
+         ],{
+           useNativeDriver:true,
+         }))}>
+         {this.renderCards()}
+
+         </Animated.ScrollView>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+ 
+  scrollView:{
+    backgroundColor: '#fff',
+
+    paddingTop:25
+  }
+});

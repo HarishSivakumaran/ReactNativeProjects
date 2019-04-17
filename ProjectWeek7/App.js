@@ -5,10 +5,10 @@ import CameraScreen from "./screens/CameraScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 
 const mainNavigator = createStackNavigator({
-  ProfileScreen:{screen:ProfileScreen},
-
 
   HomeScreen:{screen:HomeScreen},
+
+  ProfileScreen:{screen:ProfileScreen},
 
 
 
