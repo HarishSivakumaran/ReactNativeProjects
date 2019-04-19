@@ -1,7 +1,15 @@
 import React from "react";
-import {View,StyleSheet,Text,AsyncStorage,Keyboard,TouchableWithoutFeedback} from "react-native";
+import {View,StyleSheet,Text,AsyncStorage,Keyboard,TouchableWithoutFeedback,} from "react-native";
 import {Label,Input,Item,Button} from "native-base";
 
+const imageBg = [
+    {uri:"https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"},
+    {uri:"https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"},
+    {uri:"https://images.pexels.com/photos/905913/pexels-photo-905913.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"},
+    {uri:"https://images.pexels.com/photos/1036620/pexels-photo-1036620.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"},
+
+    {uri:"https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"},
+]
 
 export default class AddContactScreen extends React.Component{
 
@@ -15,6 +23,7 @@ export default class AddContactScreen extends React.Component{
             address:""
         }
     }
+
 
 
     saveContact=async ()=>{
@@ -108,7 +117,7 @@ export default class AddContactScreen extends React.Component{
     </Item>
     <Button
     onPress={()=>{this.saveContact();}}
-     full rounded primary style={{marginTop:20,marginHorizontal:10,}}>
+     full rounded priary style={{marginTop:20,marginHorizontal:10,backgroundColor:"#10A881"}}>
     <Text style={{color:"#FFF",fontSize:16,textAlign:"center"}}> Save</Text>
     </Button>
 
