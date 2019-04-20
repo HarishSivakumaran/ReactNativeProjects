@@ -3,13 +3,11 @@ import { StyleSheet, Text, View,Dimensions,Animated,TouchableWithoutFeedback } f
 import {Svg} from "expo";
 import {Feather} from "@expo/vector-icons";
 import * as Shape from "d3-shape";
-import StaticTabBar from "./src/components/StaticTabBar"
 
 export const tabBarHeight = 70;
 
 export const width = Dimensions.get("window").width;
 
-const AnimatedTouchableWithoutFeedback = Animated.createAnimatedComponent(TouchableWithoutFeedback);
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 
 
@@ -95,28 +93,30 @@ export default class App extends React.Component {
   renderIcon = ( ) =>{
 
     return tabs.map((icon,index)=>{
-      this.opacityAni = this.prevval.interpolate({
-        inputRange:[index-1,index,index+1],
-        outputRange:[1,0,1],
-        extrapolate:"clamp",
-      })
+
+   
+   this.opAni = this.prevval.interpolate({
+     inputRange:[index-1,index,index+1],outputRange:[0.99,0,1],
+     extrapolate:"clamp"
+   })
 
         return(
-            <AnimatedTouchableWithoutFeedback
-            style={{opacity:this.opacityAni}}
+          <Animated.View
+              key={index}
+              style={{opacity:this.opAni}}
+          >
+            <TouchableWithoutFeedback
             onPress={()=>{
 
-              this.changeBtn(index);
+             this.changeBtn(index);
 
-                
-
-            }}
-            key={index}
+             }}
             >
             <Feather 
             name={icon.name}
             size={30}></Feather>
-            </AnimatedTouchableWithoutFeedback>
+            </TouchableWithoutFeedback>
+            </Animated.View>
         );
 
     })
@@ -125,24 +125,22 @@ export default class App extends React.Component {
 renderIcon2 = ( ) =>{
 
   return tabs.map((icon,index)=>{
-    this.opacityAni = this.prevval.interpolate({
+    this.opacityAni2 = this.prevval.interpolate({
       inputRange:[index-1,index,index+1],
       outputRange:[0,1,0],
       extrapolate:"clamp",
     })
 
       return(
-          <AnimatedTouchableWithoutFeedback
-          style={{opacity:this.opacityAni, }}
+          <Animated.View
+          style={{opacity:this.opacityAni2, height:50,width:50,borderRadius:25,backgroundColor:"#FFF",alignItems:"center",justifyContent:"center"}}
          
           key={index}
           >
-          <View style={{height:50,width:50,borderRadius:25,backgroundColor:"#FFF",alignItems:"center",justifyContent:"center"}}>
           <Feather 
           name={icon.name}
           size={30}></Feather>
-          </View>
-          </AnimatedTouchableWithoutFeedback>
+          </Animated.View>
       );
 
   })
@@ -156,13 +154,17 @@ renderIcon2 = ( ) =>{
       </AnimatedSvg>
 
      
-      <View  style={{position:"absolute",bottom:0,height:tabBarHeight,width:width,flexDirection:"row",alignItems:"center",justifyContent:"space-around"}}>
-      {this.renderIcon()}
-      </View>
+     
 
       <View  style={{position:"absolute",bottom:30,height:tabBarHeight,width:width,flexDirection:"row",alignItems:"center",justifyContent:"space-around"}}>
       {this.renderIcon2()}
       </View>
+
+      <View  style={{position:"absolute",bottom:0,height:tabBarHeight,width:width,flexDirection:"row",alignItems:"center",justifyContent:"space-around"}}>
+      {this.renderIcon()}
+      </View>
+
+      
 
       </View>
     );
