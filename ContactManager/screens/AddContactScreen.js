@@ -64,6 +64,8 @@ export default class AddContactScreen extends React.Component{
 
 
     render(){
+        console.log("renders");
+        
         return(
             <TouchableWithoutFeedback
             style={{flex:1,}}

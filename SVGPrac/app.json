@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "TabBarAnim",
-    "slug": "TabBarAnim",
+    "name": "SVGPrac",
+    "slug": "SVGPrac",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
@@ -23,11 +23,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.yourappname"
-    },
-    "android": {
-      "package": "com.yourcompany.yourappname"
+      "supportsTablet": true
     }
   }
 }
