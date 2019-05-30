@@ -124,7 +124,7 @@ export default class App extends React.Component {
 
 renderIcon2 = ( ) =>{
 
-  return tabs.map((icon,index)=>{
+  const check=tabs.map((icon,index)=>{
     this.opacityAni2 = this.prevval.interpolate({
       inputRange:[index-1,index,index+1],
       outputRange:[0,1,0],
@@ -143,7 +143,212 @@ renderIcon2 = ( ) =>{
           </Animated.View>
       );
 
-  })
+  });
+  console.log(check);
+  /* Array [
+  Object {
+    "$$typeof": Symbol(react.element),
+    "_owner": FiberNode {
+      "tag": 2,
+      "key": null,
+      "type": [Function App],
+    },
+    "_store": Object {},
+    "key": "0",
+    "props": Object {
+      "children": Object {
+        "$$typeof": Symbol(react.element),
+        "_owner": FiberNode {
+          "tag": 2,
+          "key": null,
+          "type": [Function App],
+        },
+        "_store": Object {},
+        "key": null,
+        "props": Object {
+          "allowFontScaling": false,
+          "name": "grid",
+          "size": 30,
+        },
+        "ref": null,
+        "type": [Function Icon],
+      },
+      "style": Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFF",
+        "borderRadius": 25,
+        "height": 50,
+        "justifyContent": "center",
+        "opacity": 1,
+        "width": 50,
+      },
+    },
+    "ref": null,
+    "type": [Function AnimatedComponent],
+  },
+  Object {
+    "$$typeof": Symbol(react.element),
+    "_owner": FiberNode {
+      "tag": 2,
+      "key": null,
+      "type": [Function App],
+    },
+    "_store": Object {},
+    "key": "1",
+    "props": Object {
+      "children": Object {
+        "$$typeof": Symbol(react.element),
+        "_owner": FiberNode {
+          "tag": 2,
+          "key": null,
+          "type": [Function App],
+        },
+        "_store": Object {},
+        "key": null,
+        "props": Object {
+          "allowFontScaling": false,
+          "name": "list",
+          "size": 30,
+        },
+        "ref": null,
+        "type": [Function Icon],
+      },
+      "style": Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFF",
+        "borderRadius": 25,
+        "height": 50,
+        "justifyContent": "center",
+        "opacity": 0,
+        "width": 50,
+      },
+    },
+    "ref": null,
+    "type": [Function AnimatedComponent],
+  },
+  Object {
+    "$$typeof": Symbol(react.element),
+    "_owner": FiberNode {
+      "tag": 2,
+      "key": null,
+      "type": [Function App],
+    },
+    "_store": Object {},
+    "key": "2",
+    "props": Object {
+      "children": Object {
+        "$$typeof": Symbol(react.element),
+        "_owner": FiberNode {
+          "tag": 2,
+          "key": null,
+          "type": [Function App],
+        },
+        "_store": Object {},
+        "key": null,
+        "props": Object {
+          "allowFontScaling": false,
+          "name": "repeat",
+          "size": 30,
+        },
+        "ref": null,
+        "type": [Function Icon],
+      },
+      "style": Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFF",
+        "borderRadius": 25,
+        "height": 50,
+        "justifyContent": "center",
+        "opacity": 0,
+        "width": 50,
+      },
+    },
+    "ref": null,
+    "type": [Function AnimatedComponent],
+  },
+  Object {
+    "$$typeof": Symbol(react.element),
+    "_owner": FiberNode {
+      "tag": 2,
+      "key": null,
+      "type": [Function App],
+    },
+    "_store": Object {},
+    "key": "3",
+    "props": Object {
+      "children": Object {
+        "$$typeof": Symbol(react.element),
+        "_owner": FiberNode {
+          "tag": 2,
+          "key": null,
+          "type": [Function App],
+        },
+        "_store": Object {},
+        "key": null,
+        "props": Object {
+          "allowFontScaling": false,
+          "name": "map",
+          "size": 30,
+        },
+        "ref": null,
+        "type": [Function Icon],
+      },
+      "style": Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFF",
+        "borderRadius": 25,
+        "height": 50,
+        "justifyContent": "center",
+        "opacity": 0,
+        "width": 50,
+      },
+    },
+    "ref": null,
+    "type": [Function AnimatedComponent],
+  },
+  Object {
+    "$$typeof": Symbol(react.element),
+    "_owner": FiberNode {
+      "tag": 2,
+      "key": null,
+      "type": [Function App],
+    },
+    "_store": Object {},
+    "key": "4",
+    "props": Object {
+      "children": Object {
+        "$$typeof": Symbol(react.element),
+        "_owner": FiberNode {
+          "tag": 2,
+          "key": null,
+          "type": [Function App],
+        },
+        "_store": Object {},
+        "key": null,
+        "props": Object {
+          "allowFontScaling": false,
+          "name": "user",
+          "size": 30,
+        },
+        "ref": null,
+        "type": [Function Icon],
+      },
+      "style": Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFF",
+        "borderRadius": 25,
+        "height": 50,
+        "justifyContent": "center",
+        "opacity": 0,
+        "width": 50,
+      },
+    },
+    "ref": null,
+    "type": [Function AnimatedComponent],
+  },
+]*/
+  
+  return check;
 }
 
   render() {
